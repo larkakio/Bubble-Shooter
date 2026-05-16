@@ -1,17 +1,9 @@
 import { createConfig, createStorage, http, cookieStorage } from "wagmi";
 import { base, mainnet } from "wagmi/chains";
 import { baseAccount, injected } from "wagmi/connectors";
-import { Attribution } from "ox/erc8021";
+import { getBuilderDataSuffix } from "./builderCode";
 
-const builderCode = process.env.NEXT_PUBLIC_BUILDER_CODE;
-const suffixOverride = process.env.NEXT_PUBLIC_BUILDER_CODE_SUFFIX;
-
-const dataSuffix =
-  suffixOverride && suffixOverride.startsWith("0x")
-    ? (suffixOverride as `0x${string}`)
-    : builderCode
-      ? Attribution.toDataSuffix({ codes: [builderCode] })
-      : undefined;
+const dataSuffix = getBuilderDataSuffix();
 
 const connectors = [
   injected(),

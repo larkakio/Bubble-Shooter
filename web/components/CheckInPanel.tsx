@@ -9,7 +9,7 @@ import {
 } from "wagmi";
 import { base } from "wagmi/chains";
 import { checkInAbi, getCheckInAddress } from "@/lib/contracts/checkIn";
-import { dataSuffix } from "@/lib/wagmi/config";
+import { getBuilderDataSuffix } from "@/lib/wagmi/builderCode";
 
 export function CheckInPanel() {
   const { address, isConnected } = useAccount();
@@ -40,12 +40,13 @@ export function CheckInPanel() {
     if (chainId !== baseId) {
       await switchChainAsync({ chainId: baseId });
     }
+    const suffix = getBuilderDataSuffix();
     await writeContractAsync({
       address: contractAddress,
       abi: checkInAbi,
       functionName: "checkIn",
       chainId: baseId,
-      ...(dataSuffix ? { dataSuffix } : {}),
+      ...(suffix ? { dataSuffix: suffix } : {}),
     });
   }
 
