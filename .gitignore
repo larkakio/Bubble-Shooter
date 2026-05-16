@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+web/node_modules/
+
+# Next.js
+web/.next/
+web/out/
+web/.vercel
+
+# Foundry
+contracts/cache/
+contracts/out/
+contracts/broadcast/*/31337/
+contracts/broadcast/**/dry-run/
+
+# Environment (keep examples)
+.env
+.env.local
+**/.env.local
+!.env.example
+!**/.env.example
+
+# OS / logs
+.DS_Store
+*.log
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
