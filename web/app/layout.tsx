@@ -16,12 +16,13 @@ const jetbrains = JetBrains_Mono({
 });
 
 const baseAppId =
-  process.env.NEXT_PUBLIC_BASE_APP_ID ?? "pending-registration";
+  process.env.NEXT_PUBLIC_BASE_APP_ID ?? "6a08284f4c3f57496e8396af";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://bubble-shooter-ashy.vercel.app";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
+  metadataBase: new URL(siteUrl),
   title: "Neon Bubble Shooter",
   description:
     "Cyberpunk bubble shooter on Base. Swipe to aim, clear neon sectors, daily on-chain sync.",
